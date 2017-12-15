@@ -97,7 +97,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\nbody{\n  padding-top: 70px;\n}", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/*css 初始化 */\nhtml, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img {\n  margin: 0;\n  padding: 0;\n}\n\nfieldset, img, input, button {          /*fieldset组合表单中的相关元素*/\n  border: none;\n  padding: 0;\n  margin: 0;\n  outline-style: none;\n}\n\nul,\nol {\n  list-style: none;               /*清除列表风格*/\n}\n\ninput {\n  padding-top: 0;\n  padding-bottom: 0;\n  font-family: \"SimSun\", \"\\5B8B\\4F53\";\n  position: relative;\n}\n\nselect, input {\n  vertical-align: middle;\n}\n\nselect, input, textarea {\n  font-size: 12px;\n  margin: 0;\n}\n\ntextarea {\n  resize: none;\n}\n\n/*防止多行文本框拖动*/\nimg {\n  border: 0;\n  vertical-align: middle;\n}\n\n/*  去掉图片低测默认的3像素空白缝隙*/\ntable {\n  border-collapse: collapse;          /*合并外边线*/\n  border-spacing: 0;\n}\n\nbody {\n  font: 12px/150% Arial, Verdana, \"\\5B8B\\4F53\";   /*宋体，Unicode，统一码*/\n  color: #666;\n  background: #fff\n}\n\n/*初始化中原有的清除浮动*/\n.clearfix:before, .clearfix:after {\n  content: \"\";\n  display: table;\n}\n\n.clearfix:after {\n  clear: both;\n}\n\n.clearfix {\n  *zoom: 1; /*IE/7/6*/\n}\n\n\nh1, h2, h3, h4, h5, h6 {\n  text-decoration: none;\n  font-weight: normal;\n  font-size: 100%;\n}\n\ns, i, em {\n  font-style: normal;\n  text-decoration: none;\n}\n\nbody{\n  padding-top: 70px;\n}\n", ""]);
 
 // exports
 

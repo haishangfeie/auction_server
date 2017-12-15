@@ -169,7 +169,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".slide-image {\r\n  width: 100%;\r\n}", ""]);
+exports.push([module.i, ".carousel.slide {\r\n  margin: 0 auto;\r\n  width: 97%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -182,7 +182,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/carousel/carousel.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"carousel slide\" data-ride=\"carousel\" id=\"carousel-1\">\n  <ol class=\"carousel-indicators\">\n    <li data-target=\"#carousel-1\" class=\"active\" data-slide-to=\"0\"></li>\n    <li data-target=\"#carousel-1\" data-slide-to=\"1\"></li>\n    <li data-target=\"#carousel-1\" data-slide-to=\"2\"></li>\n  </ol>\n  <div class=\"carousel-inner\">\n    <div class=\"item active\">\n      <img src=\"\" alt=\"\" class=\"slide-image\" [src]=\"imgUrl\">\n    </div>\n    <div class=\"item\">\n      <img src=\"\" alt=\"\" class=\"slide-image\" [src]=\"imgUrl\">\n    </div>\n    <div class=\"item\">\n      <img src=\"\" alt=\"\" class=\"slide-image\" [src]=\"imgUrl\">\n    </div>\n    <a href=\"javascript:$('.carousel').carousel('prev')\" class=\"left carousel-control\">\n      <span class=\"glyphicon glyphicon-chevron-left\"></span>\n    </a>\n    <a href=\"javascript:$('.carousel').carousel('next')\" class=\"right carousel-control\">\n      <span class=\"glyphicon glyphicon-chevron-right\"></span>\n    </a>\n  </div>\n</div>\n"
+module.exports = "<div class=\"carousel slide\" data-ride=\"carousel\" id=\"carousel-1\">\n  <ol class=\"carousel-indicators\">\n    <li data-target=\"#carousel-1\" class=\"active\" data-slide-to=\"0\"></li>\n    <li data-target=\"#carousel-1\" data-slide-to=\"1\"></li>\n    <li data-target=\"#carousel-1\" data-slide-to=\"2\"></li>\n  </ol>\n  <div class=\"carousel-inner\">\n    <div class=\"item\" *ngFor=\"let item of imgUrl | async ,let i =index\" [class.active]=\"i===0\">\n      <img src=\"\" alt=\"\" class=\"slide-image\" [src]=\"item\" [class.active]=\"\">\n    </div>\n    <a href=\"javascript:$('.carousel').carousel('prev')\" class=\"left carousel-control\">\n      <span class=\"glyphicon glyphicon-chevron-left\"></span>\n    </a>\n    <a href=\"javascript:$('.carousel').carousel('next')\" class=\"right carousel-control\">\n      <span class=\"glyphicon glyphicon-chevron-right\"></span>\n    </a>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -192,6 +192,7 @@ module.exports = "<div class=\"carousel slide\" data-ride=\"carousel\" id=\"caro
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CarouselComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_product_service__ = __webpack_require__("../../../../../src/app/shared/product.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -202,11 +203,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var CarouselComponent = (function () {
-    function CarouselComponent() {
+    function CarouselComponent(productService) {
+        this.productService = productService;
     }
     CarouselComponent.prototype.ngOnInit = function () {
-        this.imgUrl = "http://placehold.it/800X300";
+        this.imgUrl = this.productService.getCarouselImg();
     };
     CarouselComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -214,7 +217,7 @@ var CarouselComponent = (function () {
             template: __webpack_require__("../../../../../src/app/carousel/carousel.component.html"),
             styles: [__webpack_require__("../../../../../src/app/carousel/carousel.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__shared_product_service__["b" /* ProductService */]])
     ], CarouselComponent);
     return CarouselComponent;
 }());
@@ -366,7 +369,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-inverse navbar-fixed-top\">\n  <div class=\"container\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a href=\"#\" class=\"navbar-brand\">在线竞拍</a>\n    </div>\n    <div class=\"collapse navbar-collapse navbar-ex1-collapse\">\n      <ul class=\"nav navbar-nav\">\n        <li><a href=\"#\">关于我们</a></li>\n        <li><a href=\"#\">联系我们</a></li>\n        <li><a href=\"#\">网站地图</a></li>\n      </ul>\n    </div>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-inverse navbar-fixed-top\">\n  <div class=\"container\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a href=\"#\" class=\"navbar-brand\">面试作品-珍品竞拍</a>\n    </div>\n    <div class=\"collapse navbar-collapse navbar-ex1-collapse\">\n      <ul class=\"nav navbar-nav\">\n        <li><a href=\"#\">关于我们</a></li>\n        <li><a href=\"#\">联系我们</a></li>\n        <li><a href=\"#\">网站地图</a></li>\n      </ul>\n    </div>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -560,7 +563,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".thumbnail>img {\r\n  width: 100%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -573,7 +576,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/product/product.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-4 col-sm-4 col-lg-4 \" *ngFor=\"let product of products | async\" >\n  <div class=\"thumbnail\">\n    <img [src]=\"imgUrl\" alt=\"\">\n    <div class=\"caption\">\n      <h4 class=\"pull-right\">{{ product.price }}元</h4>\n      <h4><a [routerLink]=\"['/product',product.id]\">{{ product.title }}</a></h4>\n      <p>{{ product.desc }}</p>\n    </div>\n    <div>\n      <app-stars [rating]=\"product.rating\"></app-stars>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"col-xs-12 col-md-6 col-sm-6 col-lg-4 \" *ngFor=\"let product of products | async\" >\n  <div class=\"thumbnail clearfix\">\n    <img [src]=\"imgUrl\" alt=\"\">\n    <div class=\"caption\">\n      <h4 class=\"pull-right\">{{ product.price }}元</h4>\n      <h4><a [routerLink]=\"['/product',product.id]\">{{ product.title }}</a></h4>\n      <p>{{ product.desc }}</p>\n    </div>\n    <div class=\"pull-left\">\n      <app-stars [rating]=\"product.rating\"></app-stars>\n    </div>\n    <div class=\"product-department pull-right\">\n      <span *ngFor=\"let name of product.categories; let i=index\">\n        <a href=\"#\">{{ name }}</a>\n        <span>{{i < (product.categories.length-1) ? '>' : ''}}</span>\n      </span>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -642,7 +645,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/search/search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"formModel\" (ngSubmit)=\"onSearch()\" novalidate>\n  <div class=\"form-group\" [class.has-error]=\"formModel.hasError('minlength','title')\">\n    <label for=\"productTitle\">商品名称:</label>\n    <input type=\"text\" id=\"productTitle\" placeholder=\"商品名称\" class=\"form-control\" formControlName=\"title\">\n    <span class=\"help-block\" [class.hidden]=\"!formModel.hasError('minlength','title')\">\n      请至少输入3个字\n    </span>\n  </div>\n  <div class=\"form-group\" [class.has-error]=\"formModel.hasError('positiveNumber','price')\">\n    <label for=\"productPrice\">商品价格：</label>\n    <input type=\"text\" id=\"productPrice\" placeholder=\"商品价格\" class=\"form-control\" formControlName=\"price\">\n    <span class=\"help-block\" [class.hidden]=\"!formModel.hasError('positiveNumber','price')\">\n      请至少输入正数\n    </span>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"productCategory\">商品类别：</label>\n    <select formControlName=\"category\" id=\"productCategory\" class=\"form-control\">\n      <option value=\"-1\">全部分类</option>\n      <option *ngFor=\"let category of categories\" [value]=\"category\">{{ category }}</option>\n    </select>\n  </div>\n  <div class=\"form-group\">\n    <button type=\"submit\" class=\"btn btn-primary btn-block\" >搜索</button>\n  </div>\n</form>\n"
+module.exports = "<form [formGroup]=\"formModel\" (ngSubmit)=\"onSearch()\" novalidate>\n  <div class=\"form-group\" [class.has-error]=\"formModel.hasError('minlength','title')\">\n    <label for=\"productTitle\">商品名称:</label>\n    <input type=\"text\" id=\"productTitle\" placeholder=\"商品名称：第一个商品\" class=\"form-control\" formControlName=\"title\">\n    <span class=\"help-block\" [class.hidden]=\"!formModel.hasError('minlength','title')\">\n      请至少输入3个字\n    </span>\n  </div>\n  <div class=\"form-group\" [class.has-error]=\"formModel.hasError('positiveNumber','price')\">\n    <label for=\"productPrice\">商品价格：</label>\n    <input type=\"text\" id=\"productPrice\" placeholder=\"商品价格：筛选小于该价格的商品\" class=\"form-control\" formControlName=\"price\">\n    <span class=\"help-block\" [class.hidden]=\"!formModel.hasError('positiveNumber','price')\">\n      请至少输入正数\n    </span>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"productCategory\">商品类别：</label>\n    <select formControlName=\"category\" id=\"productCategory\" class=\"form-control\">\n      <option value=\"-1\">全部分类</option>\n      <option *ngFor=\"let category of categories\" [value]=\"category\">{{ category }}</option>\n    </select>\n  </div>\n  <div class=\"form-group\">\n    <button type=\"submit\"\n            class=\"btn btn-primary btn-block\"\n            data-toggle=\"tooltip\"\n            data-placement=\"bottom\"\n            title=\"输入内容搜索商品\">\n      搜索\n    </button>\n  </div>\n</form>\n"
 
 /***/ }),
 
@@ -740,8 +743,11 @@ var ProductService = (function () {
         this.searchEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
     }
     ProductService.prototype.getAllCategories = function () {
-        var AllCategories = ["电子产品", "硬件设备", "图书"];
+        var AllCategories = ["玉器", "项链", "艺术品"];
         return AllCategories;
+    };
+    ProductService.prototype.getCarouselImg = function () {
+        return this.http.get("/api/carousel").map(function (res) { return res.json(); });
     };
     ProductService.prototype.getProducts = function () {
         return this.http.get("/api/products").map(function (res) { return res.json(); });
